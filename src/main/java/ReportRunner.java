@@ -1,11 +1,3 @@
-/*
-Add tests
-
-I assumed that every training starts at 10:00, it wasn't defined in the instruction. I wanted to modify it, but
-I did not make it in time
-Don't know what does "The date of the launch option is carried out by the input parameter." mean
- */
-
 import java.util.List;
 
 public class ReportRunner {

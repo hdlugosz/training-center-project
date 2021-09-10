@@ -58,7 +58,7 @@ public class DateTimeManager {
     public static boolean isTrainingFinished(LocalDateTime startDateTime, Integer programDuration) {
 
         LocalDateTime endDateTime = calculateEndDateTime(startDateTime, programDuration);
-        LocalDateTime currentDateTime = LocalDateTime.now().truncatedTo(ChronoUnit.HOURS);
+        LocalDateTime currentDateTime = calculateCurrentTime();
 
         return endDateTime.isBefore(currentDateTime) || endDateTime.isEqual(currentDateTime);
     }
@@ -69,7 +69,7 @@ public class DateTimeManager {
     public static int calculateHoursToTrainingCompletion(LocalDateTime startDateTime, Integer programDuration) {
 
         LocalDateTime endDateTime = calculateEndDateTime(startDateTime, programDuration);
-        LocalDateTime currentDateTime = LocalDateTime.now().truncatedTo(ChronoUnit.HOURS);
+        LocalDateTime currentDateTime = calculateCurrentTime();
 
         LocalDateTime earlierDateTime;
         LocalDateTime laterDateTime;
@@ -83,5 +83,9 @@ public class DateTimeManager {
         }
 
         return calculateHoursBetweenTwoDateTimes(earlierDateTime, laterDateTime);
+    }
+
+    public static LocalDateTime calculateCurrentTime(){
+        return LocalDateTime.now().truncatedTo(ChronoUnit.HOURS);
     }
 }

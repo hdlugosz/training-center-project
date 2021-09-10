@@ -1,8 +1,7 @@
 import org.junit.Test;
-
 import java.time.LocalDateTime;
-
 import static org.junit.Assert.*;
+
 
 public class DateTimeManagerTest {
 
@@ -100,15 +99,4 @@ public class DateTimeManagerTest {
                 12
         ));
     }
-
-    ///???????????????????? pomyslec o tym
-//    @Test
-//    public void isTrainingFinished_JustFinished() {
-//
-//        assertTrue(DateTimeManager.isTrainingFinished(
-//                LocalDateTime.now(),
-//                8
-//        ));
-//    }
-
 }
