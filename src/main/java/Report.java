@@ -1,27 +1,31 @@
+import java.util.List;
 import java.util.Map;
 
+// Report class retrieves information about students from List<Student>
+// and is able to generate reports based on this information
 public class Report {
-    private final StudentList list;
+    private final List<Student> students;
 
-    public Report(StudentList list) {
-        this.list = list;
+    public Report(List<Student> students) {
+        this.students = students;
     }
 
+    // generateShortReport returns short, sketchy information - one line per student
     public void generateShortReport() {
 
-        for (int i = 0; i < list.students.size(); i++) {
-            System.out.printf("%s(%s) - ", list.students.get(i).name, list.students.get(i).curriculum);
+        for (Student student : students) {
+            System.out.printf("%s(%s) - ", student.name, student.curriculum);
 
             int programDuration = 0;
-            for (Map.Entry<String, Integer> entry : list.students.get(i).courseMap.entrySet()) {
+            for (Map.Entry<String, Integer> entry : student.courseMap.entrySet()) {
                 programDuration += entry.getValue();
             }
 
             int days;
-            if (DateTimeManager.isTrainingFinished(list.students.get(i).startDateTime, programDuration)) {
+            if (DateTimeManager.isTrainingFinished(student.startDateTime, programDuration)) {
                 System.out.print("Training completed - ");
                 int hoursAfterCompletion = (DateTimeManager.calculateHoursToTrainingCompletion(
-                        list.students.get(i).startDateTime, programDuration));
+                        student.startDateTime, programDuration));
 
                 if (hoursAfterCompletion < 8) {
                     System.out.printf("Time passed since completion: %dhrs\n", hoursAfterCompletion);
@@ -37,7 +41,7 @@ public class Report {
             } else {
                 System.out.print("Training still in progress - ");
                 int hoursToCompletion = DateTimeManager.calculateHoursToTrainingCompletion(
-                        list.students.get(i).startDateTime, programDuration);
+                        student.startDateTime, programDuration);
 
                 if (hoursToCompletion < 8) {
                     System.out.printf("Time left to completion: %dhrs\n", hoursToCompletion);
@@ -54,22 +58,22 @@ public class Report {
         System.out.println("\n");
     }
 
+    // generateFullReport returns complete, formatted information about each student
     public void generateFullReport() {
 
-        for (int i = 0; i < list.students.size(); i++) {
-            System.out.printf("Name: %32s\n", list.students.get(i).name);
-            System.out.printf("Curriculum: %26s\n", list.students.get(i).curriculum);
+        for (Student student : students) {
+            System.out.printf("Name: %32s\n", student.name);
+            System.out.printf("Curriculum: %26s\n", student.curriculum);
 
             int programDuration = 0;
-            for (Map.Entry<String, Integer> entry : list.students.get(i).courseMap.entrySet()) {
+            for (Map.Entry<String, Integer> entry : student.courseMap.entrySet()) {
                 System.out.printf("Course: %12s, Duration: %3dhrs\n", entry.getKey(), entry.getValue());
                 programDuration += entry.getValue();
             }
 
-            System.out.printf("Start date: %26s\n", list.students.get(i).startDateTime.toString());
-
+            System.out.printf("Start date: %26s\n", student.startDateTime.toString());
             System.out.printf("End date: %28s\n", DateTimeManager.calculateEndDateTime(
-                    list.students.get(i).startDateTime, programDuration).toString());
+                    student.startDateTime, programDuration).toString());
 
             int days = 0;
             int programDurationTemp = programDuration;
@@ -83,9 +87,9 @@ public class Report {
                 System.out.printf("Duration of the program: %7dd %dhrs\n", days, programDurationTemp);
             }
 
-            if (DateTimeManager.isTrainingFinished(list.students.get(i).startDateTime, programDuration)) {
+            if (DateTimeManager.isTrainingFinished(student.startDateTime, programDuration)) {
                 int hoursAfterCompletion = (DateTimeManager.calculateHoursToTrainingCompletion(
-                        list.students.get(i).startDateTime, programDuration));
+                        student.startDateTime, programDuration));
 
                 if (hoursAfterCompletion < 8) {
                     System.out.printf("Time passed since completion: %5dhrs\n", hoursAfterCompletion);
@@ -100,7 +104,7 @@ public class Report {
 
             } else {
                 int hoursToCompletion = DateTimeManager.calculateHoursToTrainingCompletion(
-                        list.students.get(i).startDateTime, programDuration);
+                        student.startDateTime, programDuration);
 
                 if (hoursToCompletion < 8) {
                     System.out.printf("Time left to completion: %10dhrs\n", hoursToCompletion);

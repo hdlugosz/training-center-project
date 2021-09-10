@@ -2,15 +2,15 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-//////////// No longer used ////////////
+public class DataLoader {
 
-public class StudentList {
-    List<Student> students = new ArrayList<>();
+    // loadData method returns List of Student class that contains students data that is hardcoded
+    public static List<Student> loadData() {
+        List<Student> students = new ArrayList<>();
 
-    public StudentList() {
         Student student1 = new Student("Ivanov Ivan", "Java Developer",
                 LocalDateTime.of(2021, 9, 6, 10, 0));
-        student1.courseMap.put("Java", 18);
+        student1.courseMap.put("Java", 28);
         student1.courseMap.put("JDBC", 14);
         student1.courseMap.put("Spring", 14);
 
@@ -23,5 +23,15 @@ public class StudentList {
         student2.courseMap.put("Selenium", 1);
 
         students.add(student2);
+
+        Student student3 = new Student("Leonardo DiCaprio", "Data Science",
+                LocalDateTime.of(2021, 9, 1, 10, 0));
+        student3.courseMap.put("Python", 4);
+        student3.courseMap.put("R course", 4);
+        student3.courseMap.put("MatLab", 4);
+
+        students.add(student3);
+
+        return students;
     }
 }

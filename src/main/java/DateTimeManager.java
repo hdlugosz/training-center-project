@@ -1,8 +1,11 @@
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 import java.util.Objects;
+
 public class DateTimeManager {
 
+    // calculateHoursBetweenTwoDateTimes method calculates and returns number of hours between two given dates,
+    // taking into account the weekends and the fact that working hours are between 10 and 18
     public static int calculateHoursBetweenTwoDateTimes(LocalDateTime earlierDateTime, LocalDateTime laterDateTime) {
 
         int hours = 0;
@@ -25,6 +28,8 @@ public class DateTimeManager {
         return hours;
     }
 
+    // calculateEndDateTime method calculates and returns the end date of the course knowing the start date and
+    // duration in hours, taking into account the weekends and the fact that working hours are between 10 and 18
     public static LocalDateTime calculateEndDateTime(LocalDateTime startDateTime, Integer programDuration) {
 
         while (programDuration > 8) {
@@ -49,6 +54,7 @@ public class DateTimeManager {
         return startDateTime;
     }
 
+    // isTrainingFinished method returns a boolean value depending on whether the course is finished or not
     public static boolean isTrainingFinished(LocalDateTime startDateTime, Integer programDuration) {
 
         LocalDateTime endDateTime = calculateEndDateTime(startDateTime, programDuration);
@@ -57,6 +63,9 @@ public class DateTimeManager {
         return endDateTime.isBefore(currentDateTime) || endDateTime.isEqual(currentDateTime);
     }
 
+
+    // calculateHoursToTrainingCompletion calculates and returns amount of hours from now until
+    // the end date of the course (both, remaining to completion or passed from completion)
     public static int calculateHoursToTrainingCompletion(LocalDateTime startDateTime, Integer programDuration) {
 
         LocalDateTime endDateTime = calculateEndDateTime(startDateTime, programDuration);
