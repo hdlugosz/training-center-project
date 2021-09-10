@@ -4,6 +4,7 @@ Add tests
 Add possibility to change date(?)
 Add possibility to override current date for tests
 fill array with students or smt like that
+add example output in comment
 
 Don't know what does "The date of the launch option is carried out by the input parameter." mean
 Don't know if the way I implemented StudentList is right
