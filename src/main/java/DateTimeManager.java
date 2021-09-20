@@ -4,8 +4,8 @@ import java.util.Objects;
 
 public class DateTimeManager {
 
-    //calculateHoursBetweenTwoDateTimes method calculates and returns number of hours between two given dates,
-    //taking into account the weekends and the fact that working hours are between 10 and 18
+    // calculateHoursBetweenTwoDateTimes method calculates and returns number of hours between two given dates,
+    // taking into account the weekends and the fact that working hours are between 10 and 18
     public static int calculateHoursBetweenTwoDateTimes(LocalDateTime earlierDateTime, LocalDateTime laterDateTime) {
 
         int hours = 0;
