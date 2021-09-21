@@ -1,8 +1,10 @@
 import java.util.List;
 import java.util.Map;
 
-// Report class retrieves information about students from List<Student>
-// and is able to generate reports based on this information
+/**
+ * Report class retrieves information about students from List<Student>
+ * and is able to generate reports based on this information.
+ */
 public class Report {
     private final List<Student> students;
 
@@ -10,7 +12,9 @@ public class Report {
         this.students = students;
     }
 
-    // generateShortReport returns short, sketchy information - one line per student
+    /**
+     * generateShortReport returns short, sketchy information - one line per student.
+     */
     public void generateShortReport() {
 
         for (Student student : students) {
@@ -22,9 +26,9 @@ public class Report {
             }
 
             int days;
-            if (DateTimeManager.isTrainingFinished(student.startDateTime, programDuration)) {
+            if (TrainingTimeManager.isTrainingFinished(student.startDateTime, programDuration)) {
                 System.out.print("Training completed - ");
-                int hoursAfterCompletion = (DateTimeManager.calculateHoursToTrainingCompletion(
+                int hoursAfterCompletion = (TrainingTimeManager.calculateHoursToTrainingCompletion(
                         student.startDateTime, programDuration));
 
                 if (hoursAfterCompletion < 8) {
@@ -40,7 +44,7 @@ public class Report {
 
             } else {
                 System.out.print("Training still in progress - ");
-                int hoursToCompletion = DateTimeManager.calculateHoursToTrainingCompletion(
+                int hoursToCompletion = TrainingTimeManager.calculateHoursToTrainingCompletion(
                         student.startDateTime, programDuration);
 
                 if (hoursToCompletion < 8) {
@@ -58,7 +62,9 @@ public class Report {
         System.out.println("\n");
     }
 
-    // generateFullReport returns complete, formatted information about each student
+    /**
+     * generateFullReport returns complete, formatted information about each student.
+     */
     public void generateFullReport() {
 
         for (Student student : students) {
@@ -72,7 +78,7 @@ public class Report {
             }
 
             System.out.printf("Start date: %26s\n", student.startDateTime.toString());
-            System.out.printf("End date: %28s\n", DateTimeManager.calculateEndDateTime(
+            System.out.printf("End date: %28s\n", TrainingTimeManager.calculateEndDateTime(
                     student.startDateTime, programDuration).toString());
 
             int days = 0;
@@ -87,8 +93,8 @@ public class Report {
                 System.out.printf("Duration of the program: %7dd %dhrs\n", days, programDurationTemp);
             }
 
-            if (DateTimeManager.isTrainingFinished(student.startDateTime, programDuration)) {
-                int hoursAfterCompletion = (DateTimeManager.calculateHoursToTrainingCompletion(
+            if (TrainingTimeManager.isTrainingFinished(student.startDateTime, programDuration)) {
+                int hoursAfterCompletion = (TrainingTimeManager.calculateHoursToTrainingCompletion(
                         student.startDateTime, programDuration));
 
                 if (hoursAfterCompletion < 8) {
@@ -103,7 +109,7 @@ public class Report {
                 }
 
             } else {
-                int hoursToCompletion = DateTimeManager.calculateHoursToTrainingCompletion(
+                int hoursToCompletion = TrainingTimeManager.calculateHoursToTrainingCompletion(
                         student.startDateTime, programDuration);
 
                 if (hoursToCompletion < 8) {

@@ -4,7 +4,9 @@ import java.util.List;
 
 public class DataLoader {
 
-    // loadData method returns List of Student class that contains students data that is hardcoded
+    /**
+     * loadData method returns List of Student class that contains students data that is hardcoded.
+     */
     public static List<Student> loadData() {
         List<Student> students = new ArrayList<>();
 

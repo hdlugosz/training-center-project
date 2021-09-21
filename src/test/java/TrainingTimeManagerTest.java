@@ -4,12 +4,12 @@ import java.time.LocalDateTime;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class DateTimeManagerTest {
+public class TrainingTimeManagerTest {
 
-    // calculateHoursBetweenTwoDateTimes method
+    /* calculateHoursBetweenTwoDateTimes method: */
     @Test
     public void calculateHoursBetweenTwoDateTimes_SameDayTimeDifference() {
-        assertEquals(7, DateTimeManager.calculateHoursBetweenTwoDateTimes(
+        assertEquals(7, TrainingTimeManager.calculateHoursBetweenTwoDateTimes(
                 LocalDateTime.of(2021, 9, 6, 10, 0),
                 LocalDateTime.of(2021, 9, 6, 17, 0)
         ));
@@ -17,7 +17,7 @@ public class DateTimeManagerTest {
 
     @Test
     public void calculateHoursBetweenTwoDateTimes_OutsideWorkingHours() {
-        assertEquals(8, DateTimeManager.calculateHoursBetweenTwoDateTimes(
+        assertEquals(8, TrainingTimeManager.calculateHoursBetweenTwoDateTimes(
                 LocalDateTime.of(2021, 9, 6, 7, 0),
                 LocalDateTime.of(2021, 9, 6, 19, 0)
         ));
@@ -25,7 +25,7 @@ public class DateTimeManagerTest {
 
     @Test
     public void calculateHoursBetweenTwoDateTimes_TwoSameDates() {
-        assertEquals(0, DateTimeManager.calculateHoursBetweenTwoDateTimes(
+        assertEquals(0, TrainingTimeManager.calculateHoursBetweenTwoDateTimes(
                 LocalDateTime.of(2021, 9, 6, 11, 0),
                 LocalDateTime.of(2021, 9, 6, 11, 0)
         ));
@@ -33,7 +33,7 @@ public class DateTimeManagerTest {
 
     @Test
     public void calculateHoursBetweenTwoDateTimes_DatesSeparatedByWeekend() {
-        assertEquals(5, DateTimeManager.calculateHoursBetweenTwoDateTimes(
+        assertEquals(5, TrainingTimeManager.calculateHoursBetweenTwoDateTimes(
                 LocalDateTime.of(2021, 9, 10, 15, 0),
                 LocalDateTime.of(2021, 9, 13, 12, 0)
         ));
@@ -41,17 +41,17 @@ public class DateTimeManagerTest {
 
     @Test
     public void calculateHoursBetweenTwoDateTimes_DatesSeparatedByNight() {
-        assertEquals(8, DateTimeManager.calculateHoursBetweenTwoDateTimes(
+        assertEquals(8, TrainingTimeManager.calculateHoursBetweenTwoDateTimes(
                 LocalDateTime.of(2021, 9, 9, 15, 0),
                 LocalDateTime.of(2021, 9, 10, 15, 0)
         ));
     }
 
-    // calculateEndDateTime method
+    /* calculateEndDateTime method: */
     @Test
     public void calculateEndDateTime_durationLessThanOneWorkingDay() {
         assertEquals(LocalDateTime.of(2021, 9, 9, 17, 0),
-                DateTimeManager.calculateEndDateTime(
+                TrainingTimeManager.calculateEndDateTime(
                         LocalDateTime.of(2021, 9, 9, 10, 0),
                         7
                 ));
@@ -60,7 +60,7 @@ public class DateTimeManagerTest {
     @Test
     public void calculateEndDateTime_durationLongerThanOneWorkingDay() {
         assertEquals(LocalDateTime.of(2021, 9, 10, 12, 0),
-                DateTimeManager.calculateEndDateTime(
+                TrainingTimeManager.calculateEndDateTime(
                         LocalDateTime.of(2021, 9, 9, 10, 0),
                         10
                 ));
@@ -69,7 +69,7 @@ public class DateTimeManagerTest {
     @Test
     public void calculateEndDateTime_durationLongerThanOneWorkingWeek() {
         assertEquals(LocalDateTime.of(2021, 9, 16, 15, 0),
-                DateTimeManager.calculateEndDateTime(
+                TrainingTimeManager.calculateEndDateTime(
                         LocalDateTime.of(2021, 9, 9, 10, 0),
                         45
                 ));
@@ -78,16 +78,16 @@ public class DateTimeManagerTest {
     @Test
     public void calculateEndDateTime_NegativeDuration() {
         assertEquals(LocalDateTime.of(2021, 9, 16, 10, 0),
-                DateTimeManager.calculateEndDateTime(
+                TrainingTimeManager.calculateEndDateTime(
                         LocalDateTime.of(2021, 9, 16, 10, 0),
                         -10
                 ));
     }
 
-    // isTrainingFinished method
+    /* isTrainingFinished method: */
     @Test
     public void isTrainingFinished_Finished() {
-        assertTrue(DateTimeManager.isTrainingFinished(
+        assertTrue(TrainingTimeManager.isTrainingFinished(
                 LocalDateTime.of(2021, 9, 7, 10, 0),
                 12
         ));
@@ -95,7 +95,7 @@ public class DateTimeManagerTest {
 
     @Test
     public void isTrainingFinished_NotFinished() {
-        assertFalse(DateTimeManager.isTrainingFinished(
+        assertFalse(TrainingTimeManager.isTrainingFinished(
                 LocalDateTime.now(),
                 12
         ));
