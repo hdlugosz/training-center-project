@@ -12,25 +12,25 @@ public class DataLoader {
 
         Student student1 = new Student("Ivanov Ivan", "Java Developer",
                 LocalDateTime.of(2021, 9, 6, 10, 0));
-        student1.courseMap.put("Java", 28);
-        student1.courseMap.put("JDBC", 14);
-        student1.courseMap.put("Spring", 14);
+        student1.getCourseMap().put("Java", 28);
+        student1.getCourseMap().put("JDBC", 14);
+        student1.getCourseMap().put("Spring", 14);
 
         students.add(student1);
 
         Student student2 = new Student("Sidorov Ivan", "AQE",
                 LocalDateTime.of(2021, 9, 7, 10, 0));
-        student2.courseMap.put("Test Design", 3);
-        student2.courseMap.put("Page Object", 2);
-        student2.courseMap.put("Selenium", 1);
+        student2.getCourseMap().put("Test Design", 3);
+        student2.getCourseMap().put("Page Object", 2);
+        student2.getCourseMap().put("Selenium", 1);
 
         students.add(student2);
 
         Student student3 = new Student("Leonardo DiCaprio", "Data Science",
                 LocalDateTime.of(2021, 9, 1, 10, 0));
-        student3.courseMap.put("Python", 4);
-        student3.courseMap.put("R course", 4);
-        student3.courseMap.put("MatLab", 4);
+        student3.getCourseMap().put("Python", 4);
+        student3.getCourseMap().put("R course", 4);
+        student3.getCourseMap().put("MatLab", 4);
 
         students.add(student3);
 
